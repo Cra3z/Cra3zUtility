@@ -32,11 +32,6 @@ target_include_directories(
     $<INSTALL_INTERFACE:${PROJECT_NAME}/include_module>
 )
 
-add_executable(
-    example
-    main.cpp
-)
-
 install(
     DIRECTORY ${PROJECT_SOURCE_DIR}/include
     DESTINATION ${PROJECT_NAME}
