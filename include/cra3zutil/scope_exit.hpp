@@ -18,7 +18,7 @@ namespace cra3zutil {
 		explicit scope_exit(Fn&& fn) noexcept :
 			on_exit(std::forward<std::conditional_t<!std::is_lvalue_reference_v<Fn> && std::is_nothrow_constructible_v<EF, Fn>, Fn, Fn&>>(fn)) {}
 
-		template<typename Fn> requires (!std::is_same_v<std::remove_cvref_t<Fn>, scope_exit>) && std::is_constructible_v<EF, Fn> && (!std::is_nothrow_constructible_v<EF, Fn> && !std::is_nothrow_constructible_v<EF, Fn&>))
+		template<typename Fn> requires (!std::is_same_v<std::remove_cvref_t<Fn>, scope_exit>) && std::is_constructible_v<EF, Fn> && (!std::is_nothrow_constructible_v<EF, Fn> && !std::is_nothrow_constructible_v<EF, Fn&>)
 		explicit scope_exit(Fn&& fn) try :
 			on_exit(fn) {}
 		catch(...) {
